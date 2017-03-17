@@ -461,6 +461,19 @@ class WebView extends React.Component {
   };
 
   /**
+   * Navigates to the specified URL.
+   *
+   * This can be useful if you need to re-direct the webpage.
+   */
+  navigateTo = (source) => {
+    UIManager.dispatchViewManagerCommand(
+      this.getWebViewHandle(),
+      UIManager.RCTWebView.Commands.navigateTo,
+      [resolveAssetSource(source)],
+    );
+  };
+
+  /**
    * Stop loading the current page.
    */
   stopLoading = () => {

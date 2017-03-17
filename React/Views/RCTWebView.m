@@ -79,6 +79,14 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
   }
 }
 
+- (void)navigateTo:(NSDictionary *)source
+{
+  NSURLRequest *request = [RCTConvert NSURLRequest:source];
+  if (request.URL && !([request.URL isEqual:_webView.request.URL])) {
+    [_webView loadRequest:request];
+  }
+}
+
 - (void)stopLoading
 {
   [_webView stopLoading];
